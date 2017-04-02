@@ -1,4 +1,4 @@
-  After reading similar issues, it appears that with "webpack": "^2.2.1" and "webpack-dev-server": "^1.16.3",
+ After reading similar issues, it appears that with "webpack": "^2.2.1" and "webpack-dev-server": "^1.16.3",
 the loader should read 'react-hot-loader!babel-loader' and
 resolve extensions should read "['*', '.js', '.jsx']" instead of blank for the first extension.
 
@@ -18,3 +18,16 @@ const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
 )(createStore);
 const store = createStoreWithMiddleware(reducer);
+
+
+
+
+webpack.conig.js
+Had to add...
+loader: 'style-loader!css-loader'  instead of loader: 'style!css!autoprefixer?browsers=last 2 versions'
+
+npm install --save classnames   also on Vote.jsx
+
+
+***** SEE EXERCISE 2: Improved Vote State Reset *****
+It addresses the issue where the user can't vote in the last round
