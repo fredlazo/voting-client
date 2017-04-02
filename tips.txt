@@ -1,0 +1,20 @@
+  After reading similar issues, it appears that with "webpack": "^2.2.1" and "webpack-dev-server": "^1.16.3",
+the loader should read 'react-hot-loader!babel-loader' and
+resolve extensions should read "['*', '.js', '.jsx']" instead of blank for the first extension.
+
+3/25/17 9pm
+Left off at: "Introducing A Client-Side Redux Store"
+
+
+In index.jsx...
+These two were switched around and I was getting 'undefined' for socket.
+
+const socket = io(`${location.protocol}//${location.hostname}:8090`);
+socket.on('state', state =>
+  store.dispatch(setState(state))
+);
+
+const createStoreWithMiddleware = applyMiddleware(
+  remoteActionMiddleware(socket)
+)(createStore);
+const store = createStoreWithMiddleware(reducer);
